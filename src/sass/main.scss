@@ -1,0 +1,107 @@
+/*! WinUI | Copyright 2019 Yogensia | GNU GPLv3 | https://win.yogensia.com/ */
+
+// Variables
+$baseline           : 28px;
+$color-primary      : #485d78;
+$color-primary-link : #54a6e8;
+$font-family-body   : "Open Sans", Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-heading: Rubik, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size-body     : 18px;
+
+$shadow             : 0 2px 2px 0    rgba(0,0,0,.14),
+                      0 3px 1px -2px rgba(0,0,0,.2),
+                      0 1px 5px 0    rgba(0,0,0,.12);
+$shadow-hover       : 0 8px 10px 1px rgba(0,0,0,.14),
+                      0 3px 14px 2px rgba(0,0,0,.12),
+                      0 5px 5px -3px rgba(0,0,0,.2);
+
+$transition-all     : 0.6s cubic-bezier(0.19,1,.22,1);
+
+
+// Base Elements
+body {
+  background-image: url(../img/baseline-24-double.png);
+  font-family: $font-family-body;
+  font-size: $font-size-body;
+  line-height: $baseline;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  margin: 0 0 $baseline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $color-primary;
+  font-family: $font-family-heading;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+a {
+  color: $color-primary-link;
+}
+
+blockquote {
+  background: #fafafa;
+  border-left: 3px solid $color-primary-link;
+  margin: $baseline 0;
+  padding: $baseline;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+::selection {
+  background: $color-primary-link;
+  color: #fff;
+}
+
+
+// Grid
+.container {
+	display: flex;
+	margin-left: 0;
+	margin-right: auto;
+	width: 1140px;
+	max-width: 100%;
+}
+
+.row {
+	display: flex;
+	margin-left: -$baseline;
+	margin-right: -$baseline;
+	width: 100%;
+}
+
+.col {
+	flex: 1 0 auto;
+  align-items: center;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+
+// Helper classes
+.align-left {
+  float: left;
+  margin: 0 $baseline $baseline 0;
+}
+
+.align-right {
+  float: right;
+  margin: 0 0 $baseline $baseline;
+}
+
+.align-center {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+// Media Queries
+@media (min-width: 1440px) {
+}

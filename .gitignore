@@ -1,0 +1,43 @@
+# Git ignore files.
+
+# NPM
+node_modules/
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+*.map
+
+# Logs
+log/
+*.log
+*.env
+
+# OS generated files
+**.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+._*
+
+# SASS
+**/.sass-cache
+**/.sass-cache/*
+**/.map
+
+# Credentials
+ftp-config.json
+
+# Compiled code
+public/
+
+## Cache directories
+cache/
