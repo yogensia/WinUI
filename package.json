@@ -24,7 +24,6 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
-    "gulp-util": "^3.0.8",
     "vinyl-ftp": "^0.6.1"
   },
   "babel": {

@@ -14,7 +14,6 @@ const
   sass         = require('gulp-sass'),
   sourcemaps   = require('gulp-sourcemaps'),
   uglify       = require('gulp-uglify'),
-  gutil        = require('gulp-util'),
   browsersync  = require('browser-sync'),
   ftp          = require('vinyl-ftp'),
 
