@@ -128,15 +128,17 @@ blockquote p:last-child {
     display: inline-block;
     text-align: center;
     margin: 10px;
-    padding: 10px 10px 5px;
+    padding: 10px;
 
     img {
-      width: 48px;
-      height: 48px;
+      width: 92px;
+      height: 92px;
     }
 
     span {
       display: block;
+      line-height: 16px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, .75);
     }
   }
 
@@ -169,9 +171,9 @@ blockquote p:last-child {
     display: block;
     float: left;
     margin: 0 1px 0 0;
-    padding: 8px;
+    padding: 8px 12px;
     position: relative;
-    width: 40px;
+    width: 48px;
 
     img {
       display: block;
@@ -193,7 +195,7 @@ blockquote p:last-child {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 32px;
+    width: 40px;
     height: 2px;
     margin: 0 4px;
     transition: $transition-all-3;
@@ -201,8 +203,12 @@ blockquote p:last-child {
 
   li.active b,
   li:hover b {
-    width: 40px;
+    width: 48px;
     margin: 0;
+  }
+
+  #start-menu-button {
+    margin: 0 3px 0 0;
   }
 }
 
@@ -229,7 +235,8 @@ blockquote p:last-child {
 
   .clock {
     text-align: center;
-    line-height: 18px
+    font-size: 12px;
+    line-height: 18px;
   }
 
   .notifications {
