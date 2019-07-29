@@ -5,24 +5,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&display=swap">
   <link rel="stylesheet" href="css/bundle.css">
   <title>WinUI</title>
 </head>
 
 <body>
-  <div id="wrapper">
 
-    <div id="desktop">
+  <div id="desktop">
 
-      <div id="taskbar" class="col">
-        <div id="start-menu">
-          <p>Hello World!</p>
-        </div>
-      </div>
+    <ul id="desktop-icons">
+      <li>
+        <img src="img/icons/apps/google-chrome.png" alt="Recycle Bin" title="Recycle Bin">
+        <span>Recycle Bin</span>
+      </li>
+    </ul>
 
-    </div> <!-- end desktop -->
+    <div id="taskbar-container">
 
-  </div> <!-- end wrapper -->
+      <ul id="taskbar">
+        <li id="start-menu-button">
+          <img src="img/icons/windows/windows-flag-white.png" alt="Start" title="Start">
+          <div id="start-menu">
+          </div>
+        </li>
+        <li class="open active"><img src="img/icons/apps/google-chrome.png" alt="File Explorer" title="File Explorer"><b></b></li>
+        <li class="open"><img src="img/icons/apps/google-chrome.png" alt="Google Chrome" title="Google Chrome"><b></b></li>
+        <li><img src="img/icons/apps/google-chrome.png" alt="Discord" title="Discord"><b></b></li>
+        <li><img src="img/icons/apps/google-chrome.png" alt="Spotify" title="Spotify"><b></b></li>
+        <li><img src="img/icons/apps/google-chrome.png" alt="Visual Studio Code" title="Visual Studio Code"><b></b></li>
+      </ul>
+
+      <ul id="tray">
+        <li title="Show hidden icons"><i class="fas fa-angle-up"></i></li>
+        <li title="Network"><i class="fas fa-network-wired"></i></li>
+        <li title="Volume"><i class="fas fa-volume-up"></i></li>
+        <li class="clock">13:37<br>01/01/2020</li>
+        <li class="notifications" title="2 new notifications"><i class="fas fa-bell"></i></li>
+        <li class="show-desktop"></li>
+      </ul>
+
+    </div> <!-- end taskbar-container -->
+
+  </div> <!-- end desktop -->
 
   <script src="js/bundle.js"></script>
 </body>
