@@ -89,6 +89,8 @@ const watchSASS = () => {
 const styleCSS = {
   src: [
     dir.src   + 'css/vendor/normalize.css',
+    dir.src   + 'lib/fontawesome/css/fontawesome.min.css',
+    dir.src   + 'lib/fontawesome/css/solid.min.css',
     dir.cache + '/main.css'
   ],
   build: dir.build + 'css/'
@@ -121,13 +123,13 @@ const watchCSS = () => {
 // SASS settings.
 const img = {
   src: [
-    dir.src + '**/*.gif',
-    dir.src + '**/*.jpg',
-    dir.src + '**/*.jpeg',
-    dir.src + '**/*.png',
-    dir.src + '**/*.svg'
+    dir.src + 'img/**/*.gif',
+    dir.src + 'img/**/*.jpg',
+    dir.src + 'img/**/*.jpeg',
+    dir.src + 'img/**/*.png',
+    dir.src + 'img/**/*.svg'
   ],
-  build: dir.build
+  build: dir.build + 'img/'
 }
 
 const compileImage = () => {
@@ -152,7 +154,8 @@ const watchImage = () => {
   let watch = gulp.watch(img.src)
   watch.on('all', () => {
     compileImage()
-    browsersync ? browsersync.reload : {}
+      .pipe(browsersync.reload({ stream: true }))
+    // browsersync ? browsersync.reload : {}
   })
 }
 
@@ -185,6 +188,47 @@ const watchScript = () => {
   let watch = gulp.watch(js.src)
   watch.on('all', () => {
     compileScript()
+      .pipe(browsersync.reload({ stream: true }))
+  })
+}
+
+
+// -------------------------------------------------------------------
+
+
+// Other assets.
+const other = {
+  src: [
+    dir.src + 'lib/fontawesome/**/*.eot',
+    dir.src + 'lib/fontawesome/**/*.ttf',
+    dir.src + 'lib/fontawesome/**/*.woff',
+    dir.src + 'lib/fontawesome/**/*.woff2',
+    dir.src + 'lib/fontawesome/**/*.svg'
+  ],
+  build: dir.build
+}
+
+const compileOther = () => {
+  return gulp
+    .src(other.src)
+    .pipe(imagemin([
+      imagemin.gifsicle({ interlaced: true }),
+      imagemin.jpegtran({ progressive: true }),
+      imagemin.optipng({ optimizationLevel: 5 }),
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: true },
+          { cleanupIDs: false }
+        ]
+      })
+    ]))
+    .pipe(gulp.dest(other.build))
+}
+
+const watchOther = () => {
+  let watch = gulp.watch(other.src)
+  watch.on('all', () => {
+    compileOther()
       .pipe(browsersync.reload({ stream: true }))
   })
 }
@@ -232,13 +276,13 @@ const deploy = () => {
 // -------------------------------------------------------------------
 
 
-const compile = gulp.parallel(compileMarkup, gulp.series(compileSASS, compileCSS), compileImage, compileScript)
+const compile = gulp.parallel(compileMarkup, gulp.series(compileSASS, compileCSS), compileImage, compileScript, compileOther)
 compile.description = 'Compile all sources.'
 
 const serve = gulp.series(compile, startServer)
 serve.description = 'Serve compiled source on local server.'
 
-const watch = gulp.parallel(watchMarkup, watchSASS, watchCSS, watchImage, watchScript)
+const watch = gulp.parallel(watchMarkup, watchSASS, watchCSS, watchImage, watchScript, watchOther)
 watch.description = 'Watch for changes to all source.'
 
 const defaultTask = gulp.parallel(serve, watch)
@@ -254,11 +298,13 @@ module.exports = {
   // compileCSS,
   // compileImage,
   // compileScript,
+  // compileOther,
   // watchMarkup,
   // watchSASS,
   // watchCSS,
   // watchImage,
   // watchScript,
+  // watchOther,
   deploy,
   compile,
   serve,
